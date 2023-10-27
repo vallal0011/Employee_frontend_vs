@@ -1,0 +1,126 @@
+/* input[type="text"],
+input[type="password"] {
+  height: 30px;
+  width: 380px;
+  margin-left: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  font-size: medium;
+} */
+input[type="checkbox"] {
+    margin-left: 40px;
+    height: 15px;
+    width: 15px;
+}
+
+
+input[type="submit"]:hover {
+  background: #6cf0c2;
+}
+label {
+    text-align: left;
+    /* margin-left: 25px; */
+}
+
+/* .signin{
+  background: #4ECDC4;  
+  background: -webkit-linear-gradient(to right, #556270, #4ECDC4);  
+  background: linear-gradient(to right, #556270, #4ECDC4); 
+} */
+.label {
+    margin-top: 25px;
+}
+.login-form .form {
+    height: auto; /* Remove the fixed height */
+    width: 450px;
+    border: 2px solid;
+    border-color: #CECDCD;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center form content horizontally */
+  }
+  
+.rightSide {
+    height: 146px;
+    width: 600px;
+    margin-left: 650px;
+    margin-top: -350px;
+}
+.logoText {
+    font-family: poppins;
+    font-size: 35px;
+    font-weight: bold;
+    margin-left: 100px;
+    margin-top: 50px;
+}
+.docChain {
+    font-family: poppins;
+    font-size: 25px;
+    color: #62C2FF;
+    text-align: left;
+    margin-left: 30px;
+}
+.signupText {
+    font-family: poppins;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    /* margin-left: 30px; */
+}
+.welcome {
+    font-family: poppins;
+    font-size: 25px;
+    font-weight: normal;
+    text-align: center;
+    /* margin-left: 5px; */
+    margin-top: 20px;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+.loginBtn {
+    width: 380px;
+    height: 35px;
+    margin-top: 35px;
+    background-color: #62C2FF;
+    border: 1px solid #585858;
+    border-radius: 5px;
+    font-family: poppins;
+    font-size: medium;
+    
+}
+
+
+.login-form {
+    background-color: white;
+    padding: 2rem;
+    display: flex; /* Add this line */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Adjust the height as needed */
+  }
+  
+
+.list-container {
+  display: flex;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+.title {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px;
+}
