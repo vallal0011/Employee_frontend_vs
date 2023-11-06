@@ -1,9 +1,9 @@
 import React from "react";
-import { NavLink,useNavigate ,Link,Route,Routes,BrowserRouter} from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import { Department } from "./Department";
 import { Employee } from "./Employee";
 
-
+import { BrowserRouter as Routes, Route, Switch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { useEffect } from 'react';
@@ -70,6 +70,8 @@ const Content= ()=>{
             
 
  </nav>
+
+       
        {user && <Routes>
         <Route path="department" element={<Department />} />
         <Route path="employee" element={<Employee />} />
