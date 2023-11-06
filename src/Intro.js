@@ -4,7 +4,7 @@ import Login from './Login';
 import Register from './Register';
 import {BrowserRouter, Route,NavLink,Routes,useNavigate,useLocation} from 'react-router-dom';
 
-
+import "./Intro.css";
 const Intro =()=>{
 
 
@@ -46,7 +46,7 @@ const Intro =()=>{
          
 
       </nav>
-      <h3 d-flex  m-3>This is Home page</h3>
+      <h3  className='d-flex justify-content-center  m-3'>This is Home page</h3>
       </div>
       
     )

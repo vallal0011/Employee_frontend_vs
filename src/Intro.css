@@ -1,0 +1,9 @@
+/* styles.css */
+h3 {
+    color: rgb(14, 142, 234);
+    font-size: 24px;
+    font-weight:lighter;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    padding-top: 300px;
+  }
