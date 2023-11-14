@@ -31,6 +31,8 @@ function App() {
     
       <Routes>
         <Route path="/" element={user ? <Navigate to="/content" /> : <Login />} />
+        <Route path="/userregister" element={<Register/>} />
+        <Route path="/adminregister" element={<Adminregister/>} />
         {user && (
           <Route path="content" element={<Content />}>
             <Route path='department' element={<Department />} />
