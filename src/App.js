@@ -3,52 +3,58 @@ import './App.css';
 import {Home} from './Home';
 import {Department} from './Department';
 import {Employee} from './Employee';
-import {BrowserRouter, Route,NavLink,Routes,useNavigate,useLocation} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Content from './Content';
 
 import Login from './Login';
 import Register from './Register';
 import Intro from './Intro';
 import Adminregister from './Adminregister';
+import { useEffect } from 'react';
+import { gapi } from 'gapi-script';
 
 
-  // Check if the user is authenticated (you can implement your logic here)
-  function isUserAuthenticated() {
-    const token = localStorage.getItem('Asp_Token');
-    return !!token; // Return true if a token is present; otherwise, false.
-  }
-
+import { useState } from 'react';
+import { useNavigate,Link } from 'react-router-dom';
+import GoogleLoginComponent from './GoogleLoginComponent';
+import PrivateRoute from './PrivateRoute'; 
+import { BrowserRouter } from 'react-router-dom';
 function App() {
-
-
-  const user = localStorage.getItem('Asp_Token');
-
  
+  const Navigate=useNavigate();
+  const user = sessionStorage.getItem('Asp_Token');
+  
   return (
     
+    
+    <>
+    
+      <Routes>
+        <Route path="/" element={user ? <Navigate to="/content" /> : <Login />} />
+        {user && (
+          <Route path="content" element={<Content />}>
+            <Route path='department' element={<Department />} />
+            <Route path="employee" element={<Employee />} />
+            <Route path="*" element={<Content />} />
+          </Route>
+          
+        )}
 
-      <BrowserRouter>
-      
+        <Route
+              path="/content/department"
+              element={
+                user ? (
+                  <Department />
+                ) : (
+                  // If the user is not authenticated, redirect to the login page
+                  <Navigate to="/" replace />
+                )
+              }
+            />
 
-     <Routes>
-                    
-                    <Route path='/' element={<Intro />} />
-
-
-                  {/* <Route path='/home' element={<Home />} /> */}
-                  <Route path="/userlogin" element={<Login />} />
-                  <Route path='/userregister' element={<Register />} />
-
-                  <Route path='/adminregister' element={<Adminregister/>}/>
-
-                  {user &&
-                  <Route path='/content/*' element={<Content />}>
-                    <Route path='department' element={<Department />} />
-                    <Route path='employee' element={<Employee />} />
-                  </Route>  }
-        </Routes>
-
-        </BrowserRouter>
+       
+      </Routes>
+    </>
     
    
   );

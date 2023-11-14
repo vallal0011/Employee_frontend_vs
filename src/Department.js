@@ -18,19 +18,21 @@ export class Department extends Component{
         }
     }
     // Function to get the token from local storage
-    getToken() {
-        return localStorage.getItem('Asp_Token');
-    }
-   
+    // Function to get the token from session storage
+        getToken() {
+            return sessionStorage.getItem('Asp_Token');
+        }
     // Function to fetch data with authentication headers
     fetchDataWithAuthentication(url, options = {}) {
         const token = this.getToken();
         if (!token) {
             // Handle the case when the user is not authenticated, e.g., redirect to login
+            console.log("Token is not available")
             return;
         }
 
         // Set the authorization header with the token
+        console.log("Token:::",token)
         options.headers = {
             ...options.headers,
             'Authorization': `Bearer ${token}`
@@ -81,13 +83,24 @@ export class Department extends Component{
         this.FilterFn();
     }
 
-    refreshList(){
+    refreshList() {
         this.fetchDataWithAuthentication(variables.API_URL + 'department')
-        .then(response=>response.json())
-        .then(data=>{
-            this.setState({departments:data,departmentsWithoutFilter:data});
-        });
-    }
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error('Network response was not ok');
+            }
+          })
+          .then((data) => {
+            this.setState({ departments: data, departmentsWithoutFilter: data });
+          })
+          .catch((error) => {
+            console.error('Error fetching data:', error);
+            // Handle the error, e.g., show an error message to the user.
+          });
+      }
+      
 
     
     componentDidMount(){
@@ -182,7 +195,8 @@ export class Department extends Component{
             DepartmentName
         }=this.state;
 
-
+     
+        
 
         return(
 <div>
