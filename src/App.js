@@ -11,7 +11,7 @@ import Register from './Register';
 import Intro from './Intro';
 import Adminregister from './Adminregister';
 import { useEffect } from 'react';
-import { gapi } from 'gapi-script';
+
 
 
 import { useState } from 'react';
