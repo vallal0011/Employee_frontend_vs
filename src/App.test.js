@@ -12,6 +12,6 @@ test('renders learn react link', () => {
      </BrowserRouter>
   );
  
-  const linkElement = screen.getByText(/This is Home page/i);
+  const linkElement = screen.getByText(/Welcome To The Portal/i);
   expect(linkElement).toBeInTheDocument();
  });
