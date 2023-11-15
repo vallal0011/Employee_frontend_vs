@@ -27,16 +27,7 @@ const Content = () => {
                 Employee
               </Link>
             </li>
-            <li className="nav-item- m-1">
-              <Link className="btn btn-light btn-outline-primary" to="./employee">
-                Employee
-              </Link>
-            </li>
-            <li className="nav-item- m-1">
-              <Link className="btn btn-light btn-outline-primary" to="./employee">
-                Employee
-              </Link>
-            </li>
+            
 
           </ul>
           
