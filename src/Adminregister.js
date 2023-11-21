@@ -97,7 +97,7 @@ const Adminregister =()=>{
                 </div>
               {/* <p>Already have an account? <Link className='link' to="/userlogin">Login</Link></p> */}
 
-              <p>Already have an account? <NavLink  to="/userlogin">Login</NavLink></p>
+              <p>Already have an account? <NavLink  to="/">Login</NavLink></p>
               
     
             </form>

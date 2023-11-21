@@ -19,10 +19,10 @@ export class Employee extends Component{
         }
     }
      // Function to get the token from local storage
-     getToken() {
-        return localStorage.getItem('Asp_Token');
-    }
-   
+   // Function to get the token from session storage
+            getToken() {
+                return sessionStorage.getItem('Asp_Token');
+            }
     // Function to fetch data with authentication headers
     fetchDataWithAuthentication(url, options = {}) {
         const token = this.getToken();
@@ -39,20 +39,23 @@ export class Employee extends Component{
 
         return fetch(url, options);
     }
-    refreshList(){
-
-        this.fetchDataWithAuthentication(variables.API_URL+'employee')
-        .then(response=>response.json())
-        .then(data=>{
-            this.setState({employees:data});
-        });
-
-        this.fetchDataWithAuthentication(variables.API_URL+'department')
-        .then(response=>response.json())
-        .then(data=>{
-            this.setState({departments:data});
-        });
-    }
+    refreshList() {
+        Promise.all([
+          this.fetchDataWithAuthentication(variables.API_URL + 'employee').then(response => response.json()),
+          this.fetchDataWithAuthentication(variables.API_URL + 'department').then(response => response.json())
+        ])
+          .then(([employeeData, departmentData]) => {
+            this.setState({
+              employees: employeeData,
+              departments: departmentData,
+            });
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+            // Handle the error, e.g., show an error message to the user.
+          });
+      }
+      
 
     componentDidMount(){
         this.refreshList();

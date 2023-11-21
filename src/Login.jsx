@@ -7,6 +7,8 @@ import { Link, redirect, useNavigate ,NavLink} from 'react-router-dom';
 
 import {variables} from './Variable.js';
 
+import GoogleLoginComponent from "./GoogleLoginComponent";
+import Intro from './Intro';
 import "./Login.css"
 
 
@@ -55,7 +57,9 @@ const Login=()=>{
            if (response.ok) {
              const result = await response.json();
              // Save the token to localStorage
-             localStorage.setItem('Asp_Token', result.token);
+            //  localStorage.setItem('Asp_Token', result.token);
+             // Store the token in sessionStorage
+              sessionStorage.setItem('Asp_Token', result.token);
              console.log("Token", result.token);
              alert('User login successful');
              console.log('Token expiration:', result.expiration);
@@ -68,10 +72,14 @@ const Login=()=>{
         }
        };
 
+       useEffect(() => {
+        // You can use this useEffect for any other initial setup if needed
+      }, []);
 
 
     return(
-
+      <div>
+        <Intro/>
       <div className='login-form'>
         <div className='row'>
           <div className='col col-md-12 align-items-center d-flex'>
@@ -98,14 +106,20 @@ const Login=()=>{
               <div className="button-container">
               <button className='loginBtn' type='submit' id="submit">Login</button>
             </div>
+           
         
               {/* <p>Don't have an account? <Link className='link' to="/userregister">Register</Link></p> */}
              
+               {/* Include the Google SSO component here */}
+             
+               <GoogleLoginComponent />
 
               <p>Don't have an account?<NavLink  to="/userregister">
               Register
             </NavLink></p>
               
+              
+
             </form>
           </div>
           
@@ -113,7 +127,7 @@ const Login=()=>{
       </div>
 
 
-
+    </div>
 
     )
 }
