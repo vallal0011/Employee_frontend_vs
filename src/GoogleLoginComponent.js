@@ -6,7 +6,7 @@ import {GoogleLogin} from 'react-google-login';
 
 
 
-const clientId ="357648501888-2nlksl127d0dh4fmen3jhns8mm88tmkp.apps.googleusercontent.com";
+
 
 
 const GoogleSSOComponent = () => {
